@@ -17,9 +17,9 @@ Install R.Matlab by the command: install.packages('R.matlab') .
 You also need the command: install.packages('ggplot2') .
 
 
-To generate Fig. 3, use TrajectoryGenerator_3Nodes_plot.m
+To generate Fig. 3, use TrajectoryGenerator_3Nodes_plot.m .
 To generate Fig.6, use TrajectoryGenerator_3Nodes_plot.m with the choice of parameters following the figure caption.
-To generate Fig.4 and Fig.5,  check BoxPlotAll.html
+To generate Fig.4 and Fig.5,  check BoxPlotAll.html .
 
 All remaining files are either functions called by the m-files mentioned above or .mat files that are generated 
 by dataGenerator_for_BoxPlot.m, which is mentioned in BoxPlotAll.html. 

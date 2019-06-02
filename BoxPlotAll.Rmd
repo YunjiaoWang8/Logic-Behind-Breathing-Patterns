@@ -1,0 +1,149 @@
+---
+title: "BoxPlot for inspiration and expiration"
+author: "Alona Ben-Tal, Yunjiao Wang, and Maria Leite"
+date: "2/12/2019"
+output: html_document
+---
+
+The matlab file  dataGenerator_for_BoxPlot.m generates all the data plotted below. 
+
+### Varying c1 for 3-phase case
+```{r c1_3phase, include=TRUE}
+library(R.matlab)
+# read the matlab file as a list
+data <- readMat('AllData_varyingc1_totBreath.mat')
+
+# convert it to data frame
+data <- data.frame(data)
+# change the column name
+names(data)<-c('Signal_period', 'Type', 'Duration')
+
+data$Signal_period <- factor(data$Signal_period)
+data$Type <- factor(data$Type)
+
+library(ggplot2)
+
+p = ggplot(data = data, aes(x = Signal_period, y = Duration)) +
+  geom_boxplot(aes(fill = Type), width = 0.8) + theme_bw() +
+  ggtitle("expiration(0), inspiration(1) and total breathing(2):varing p1 (phase3) ")
+print(p)
+
+```
+
+### Varying c1 in 2-phase case
+
+```{r c1_2phase, include=TRUE}
+library(R.matlab)
+# read the matlab file as a list
+data <- readMat('AllData_varyingc1_totBreath1_phase2.mat')
+
+# convert it to data frame
+data <- data.frame(data)
+# change the column name
+names(data)<-c('Signal_period', 'Type', 'Duration')
+
+data$Signal_period <- factor(data$Signal_period)
+data$Type <- factor(data$Type)
+
+library(ggplot2)
+
+p = ggplot(data = data, aes(x = Signal_period, y = Duration)) +
+  geom_boxplot(aes(fill = Type), width = 0.8) + theme_bw() +
+  ggtitle("expiration(0), inspiration(1) and total breathing(2):varing p1 (phase2) ")
+print(p)
+
+```
+
+### Varying c3 in 2-phase
+```{r c3_2phase, include=TRUE}
+library(R.matlab)
+# read the matlab file as a list
+data <- readMat('VaryingC3_Phase_2.mat')
+
+# convert it to data frame
+data <- data.frame(data)
+# change the column name
+names(data)<-c('Signal_period', 'Type', 'Duration')
+
+data$Signal_period <- factor(data$Signal_period)
+data$Type <- factor(data$Type)
+
+library(ggplot2)
+
+p = ggplot(data = data, aes(x = Signal_period, y = Duration)) +
+  geom_boxplot(aes(fill = Type), width = 0.8) + theme_bw() +
+  ggtitle("expiration(0), inspiration(1) and total breathing(2):varing p3 (phase2) ")
+print(p)
+
+```
+Here the coloring is not missing. We cannot see color because of the thin boxes: the boxes along the slant line are in cyan and the boxes along the horizontal line are in red. 
+
+See the magnified portion below.
+
+```{r c3_2phase_enlarged, include=TRUE,echo=FALSE}
+library(R.matlab)
+# read the matlab file as a list
+data <- readMat('VaryingC3_Phase_2.mat')
+
+# convert it to data frame
+data <- data.frame(data)
+# change the column name
+names(data)<-c('Signal_period', 'Type', 'Duration')
+data<- subset(data,Signal_period < 130 )
+data$Signal_period <- factor(data$Signal_period)
+data$Type <- factor(data$Type)
+
+library(ggplot2)
+
+p = ggplot(data = data, aes(x = Signal_period, y = Duration)) +
+  geom_boxplot(aes(fill = Type), width = 0.8) + theme_bw() +
+  ggtitle("expiration(0), inspiration(1) and total breathing(2):varing p3 (phase2) ")
+print(p)
+
+```
+
+### Varying c4 in 3-phase
+```{r c4_3phase, include=TRUE}
+library(R.matlab)
+# read the matlab file as a list
+data <- readMat('AllData_varyingc4_p3_121.mat')
+
+# convert it to data frame
+data <- data.frame(data)
+# change the column name
+names(data)<-c('Signal_period', 'Type', 'Duration')
+
+data$Signal_period <- factor(data$Signal_period)
+data$Type <- factor(data$Type)
+
+library(ggplot2)
+
+p = ggplot(data = data, aes(x = Signal_period, y = Duration)) +
+  geom_boxplot(aes(fill = Type), width = 0.8) + theme_bw() +
+  ggtitle("expiration(0), inspiration(1) and total breathing(2):varing p4 (phase3) ")
+print(p)
+
+```
+
+### Varying c3 in 3-phase
+```{r c3_3phase, include=TRUE}
+library(R.matlab)
+# read the matlab file as a list
+data <- readMat('VaryingC3_Phase_3.mat')
+
+# convert it to data frame
+data <- data.frame(data)
+# change the column name
+names(data)<-c('Signal_period', 'Type', 'Duration')
+
+data$Signal_period <- factor(data$Signal_period)
+data$Type <- factor(data$Type)
+
+library(ggplot2)
+
+p = ggplot(data = data, aes(x = Signal_period, y = Duration)) +
+  geom_boxplot(aes(fill = Type), width = 0.8) + theme_bw() +
+  ggtitle("expiration(0), inspiration(1) and total breathing(2):varing p3 (phase3) ")
+print(p)
+
+```
